@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            height: auto;
+            width: 90%;
+            background-color: #ffe56b;
+            border-radius: 8px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        #plate {
+            width: 45%;
+        }
+
+        .navbar {
+            width: 90%;
+            height: 10vh;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+
+
+        .links a {
+            text-decoration: none;
+            color: black;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+            margin-left: 15px;
+
+        }
+        .links a:hover{
+          color: #ed3731;
+        }
+
+        .about {
+            max-width: 500px;
+            margin-left: 30px;
+        }
+
+        .h1 {
+            letter-spacing: 1px;
+            line-height: 40px;
+            font-size: 30px;
+            color: black;
+            font-weight: bold;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+
+        }
+
+        .h2 {
+            text-align: center;
+            margin-top: 0px;
+            font-size: 50px;
+            color: white;
+            font-family: monospace;
+        }
+
+        .para {
+            margin-top: 14px;
+            font-size: 20px;
+            font-family: math;
+            letter-spacing: 1px;
+            color: #6f5f16;
+
+            /* max-width: 450px; */
+        }
+
+ 
+
+        #cart {
+            width: 270px;
+            background-color: rgba(0, 0, 0, 0.726);
+            position: absolute;
+            height: 550px;
+            top: 0px;
+            right: -280px;
+            z-index: 2;
+            transition: all 0.5s ease-in-out;
+           
+
+        }
+
+        #cartdiv {
+            height:80%;
+            overflow-y: auto
+        }
+
+        .cartitem {
+            height: 70px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 25px 10px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.582);
+
+        }
+
+        .cartitem img {
+            width: 70px;
+            border-radius: 16%;
+        }
+
+        .cartitem h2 {
+            text-align: center;
+            font-size: 17px;
+            font-family: math;
+        }
+
+        .price_dele {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            right: 4px;
+            margin-top: 10px;
+        }
+
+        .price_dele span {
+            position: relative;
+            color: #ed3731;
+            font-size: 18px;
+        }
+
+
+        .price_dele img {
+            width: 26px;
+            height: 26px;
+            cursor: pointer;
+        }
+
+        .totalprice_check {
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            right: 0px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            background-color: #ed3731;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+
+        #CheckOut {
+            padding: 8px 0px;
+            background-color: black;
+            color: white;
+            border-radius: 0px;
+            font-size: 15px;
+            cursor: pointer;
+            border: 1px solid black;
+            width: 80%;
+            border-radius: 4px;
+        }
+
+        .count {
+            position: absolute;
+            top: -8px;
+            right: -5px;
+            color: white;
+            font-size: 15px;
+            font-family: monospace;
+            width: 20px;
+            height: 23px;
+            background-color: #121212;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #cross {
+            position: relative;
+            top: 11px;
+            left: 220px;
+            font-size: 25px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .calprice {
+            display: flex;
+            width: 80%;
+            justify-content: space-between;
+        }
+
+        .calprice h3 {
+            font-size: larger;
+            color: white;
+        }
+
+        .priceincart {
+            font-size: large;
+
+            color: white;
+        }
+
+        .navbaritem {
+            width: 700px;
+            max-width: 700px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 60px;
+            height: 60px;
+
+        }
+
+        .separate_cart_div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .keepinTouch {
+            background-color: #ed3731;
+            color: white;
+            font-weight: bold;
+            height: 32px;
+            font-size: 15px;
+            padding: 0px 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border: 1px solid #ed3731;
+            transition: all 0.5s linear;
+            cursor: pointer;
+        }
+        .keepinTouch:hover{
+           background-color: #f56c67;
+        }
+    </style>
+
+    <!-- aboutportion -->
+    <style>
+        #aboutus {
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            margin: 100px auto;
+
+        }
+
+
+
+        .leftabout {
+            background-color: #322d29;
+            max-width: 580px;
+            height: 100%;
+        }
+
+        .leftContent {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .leftContent h2 {
+            font-family: monospace;
+            font-size: 20px;
+            color: #d6d6d5c2;
+        }
+
+        .leftContent h1 {
+            text-align: center;
+            color: #eae8e5e0;
+            font-family: monospace;
+            font-size: 27px;
+            padding: 0px 6px
+        }
+
+        .leftContent p {
+            width: 60%;
+            text-align: center;
+            font-family: sans-serif;
+            color: #bbb8b3;
+            font-size: 13px;
+            margin-top: 50px;
+        }
+
+
+        .underline {
+            width: 90px;
+            height: 2px;
+            background-color: white;
+            margin-top: 8px;
+            margin-top: 4px;
+        }
+
+        #rightabout {
+            width: 330px;
+            height: 100%;
+
+        }
+
+        #readmore {
+            padding: 5px 8px;
+            color: #d1cdc6;
+            border: 1px solid #d1cdc6;
+            ;
+            border-radius: 4px;
+            background: none;
+            margin-top: 10px;
+        }
+    </style>
+
+    <style>
+        #section2 {
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            margin-top: 60px;
+        }
+
+        .sheffs {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+
+            width: 90%;
+            margin: 0px auto;
+        }
+
+
+        .cardsheff {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            background: #fff;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .cardsheff::before {
+            content: " ";
+            display: block;
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            background: linear-gradient(#ed3731bf, #eae7e2 45%, #fff 45%, #fff 100%);
+        }
+
+        .img-bx {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            transform: translateY(30px) scale(0.5);
+            transform-origin: top;
+        }
+
+        .img-bx img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 30px;
+        }
+
+        .content .detail {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .content .detail h2 {
+            color: #444;
+            font-size: 1.6em;
+            font-weight: bolder;
+        }
+
+        .content .detail h2 span {
+            font-size: 0.7em;
+            color: #aa3937;
+            font-weight: bold;
+        }
+
+        .sci {
+            position: relative;
+            display: flex;
+            margin-top: 5px;
+        }
+
+        .sci li {
+            list-style: none;
+            margin: 4px;
+        }
+
+        .sci li a {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: transparent;
+            font-size: 1.5em;
+            color: #444;
+            text-decoration: none;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            transition: 0.5s;
+        }
+
+        .sci li a:hover {
+            background: #aa3937;
+            color: #fff;
+        }
+
+        .sci li a img {
+            width: 27px;
+            height: 27px;
+            object-fit: cover;
+        }
+    </style>
+
+    <style>
+        #customer-Preview {
+            height: auto;
+            width: 90%;
+            margin: 100px auto;
+        }
+
+
+
+        .customers {
+
+            max-width: 900px;
+            height: 400px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0px 0px 13px 0px gray;
+
+        }
+
+
+
+
+        .eachcustomer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: all 1s;
+        }
+
+
+        .cusimg {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+
+        .cusimg img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .cusdes {
+            width: 60%;
+            text-align: center;
+
+        }
+
+        .cusname {
+            color: #ed3731;
+            font-family: monospace;
+            font-size: 30px;
+            margin: 5px 0px;
+        }
+
+        .sliderbtn {
+            background-color: rgb(240, 239, 239);
+            padding: 4px;
+            margin-left: 10px;
+            border-radius: 50%;
+
+
+        }
+
+        #gallery {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: auto;
+            margin-bottom: 100px;
+        }
+
+
+
+        .galleryimage {
+
+            max-width: 1000px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .galleryimage div {
+
+            height: 300px;
+            width: 300px;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+
+        .galleryimage div img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        #Reservation {
+            margin: 50px 0px;
+            min-height: 50vh;
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+
+        }
+
+        .getdata {
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            align-items: center;
+
+        }
+
+
+        .inputs {
+            width: 80%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .input {
+            width: 90%;
+            padding: 5px 15px;
+            font-size: 21px;
+            margin: 15px 10px;
+            border-radius: 5px;
+            outline: none;
+            border: 1px solid black;
+        }
+
+        .tablepic {
+            width: 400px;
+            height: 400px;
+            margin: 0px 10px;
+        }
+
+        .getdata h2 {
+            font-family: cursive;
+            font-size: 25px;
+        }
+
+
+        .cartlogo {
+            width: 45px;
+            height: 40px;
+            position: relative;
+            cursor: pointer;
+            background-color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+        }
+
+
+        .cartlogo img {
+            width: 45px;
+            height: 45px;
+        }
+
+        .options {
+            position: absolute;
+            top: 0px;
+            font-size: 16px;
+            width: 90px;
+            background-color: beige;
+        }
+
+        .optionsdiv {
+            position: relative;
+            width: 90%;
+            padding: 0px 0px;
+            height: 40px;
+            font-size: 21px;
+            margin: 15px 10px;
+            border-radius: 5px;
+            outline: none;
+            border: 1px solid black;
+            background-color: white;
+
+        }
+    </style>
+
+
+
+
+    <style>
+        #footer {
+            background-color: black;
+            width: 100%;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .footersubheading {
+            font-size: 20px;
+            color: #aa3937;
+            text-align: center;
+        }
+
+        .copyright {
+            color: aliceblue;
+            text-align: center;
+            font-size: 16px;
+            position: absolute;
+            bottom: 10px;
+        }
+
+        .footerdetail {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            position: relative;
+            
+        }
+
+        .eachfooterpart {
+            max-width: 400px;
+        }
+
+        .address-detail {
+            color: rgb(230, 215, 215);
+        }
+
+        .phone {
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+
+        }
+
+        .phone img {
+            width: 20px;
+            margin-right: 8px;
+
+        }
+
+
+        .enteremail_button>input {
+            padding: 8px 8px;
+            outline: none;
+            border-radius: 32px;
+            font-size: px;
+        }
+
+        .enteremail_button {
+            margin-top: 10px;
+        }
+
+        .eachfooterpart {
+            margin-top: 5px;
+        }
+
+        #Send {
+            padding: 8px 10px;
+            border: 1px solid white;
+            border-radius: 26px;
+            color: white;
+            background: none;
+            margin-left: 5px;
+        }
+
+        .restaurentlink img {
+            margin-top: 5px;
+            height: 40px;
+            width: 38px;
+            margin-right: 3px;
+        }
+
+        #address {
+            margin-top: 10px;
+            font-size: 15px;
+        }
+
+        .hamburgur {
+            display: none;
+        }
+
+        .line {
+            display: block;
+            width: 60px;
+            height: 5px;
+            margin: 10px 0px;
+            background-color: black;
+
+        }
+    </style>
+
+    <style>
+        .secondcontainer {
+            display: flex;
+            flex-direction: column;
+
+            height: auto;
+            width: 90%;
+            /* background-color: #6f5f16; */
+            margin: 30px auto;
+        }
+
+        .Menubuttons {
+            background-color: #ffe56b;
+            border: 1px solid #ffe56b;
+            width: 85px;
+            padding: 7px 10px;
+            border-radius: 4px;
+            color: black;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            letter-spacing: 1px;
+            cursor: pointer;
+            margin-left: 10px;
+            margin: 10px 10px;
+            position: relative;
+        }
+
+        .Menubuttons:hover {
+            background-color: #f0d250;
+        }
+
+
+        .btnsHeading h1 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 40px;
+            text-align: center;
+        }
+
+        .Foods {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .Foodcard {
+            width: 250px;
+            overflow: hidden;
+            border-radius: 25px;
+            border: 1px solid lavender;
+            margin: 10px;
+            box-shadow: 5px 5px 15px 5px rgba(230, 230, 250, 1);
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+
+
+        .Foodcard__image {
+            position: relative;
+            height: 140px;
+        }
+
+        .Foodcard__image>img {
+            max-width: 100%;
+            border-bottom-right-radius: 30px;
+            transform: rotate(10deg) translate(-15px, -55px);
+            position: absolute;
+            height: 200px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .Foodcard__info {
+            display: flex;
+            /* align-items: flex-end; */
+            justify-content: space-between;
+            /* padding: 30px 20px 30px; */
+            width: 80%;
+            margin: 0px auto;
+            height: 100px;
+            /* padding: 16px 0px; */
+        }
+
+        .Foodcard__info--title {
+            width: 100%;
+        }
+
+        .Foodcard__info h3 {
+            font-size: 18px;
+            font-weight: 700;
+            width: 100px;
+        }
+
+
+        .Foodcard__info p {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .Foodcard__info--price {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            text-align: right;
+            color: orangered;
+        }
+
+        .Foodcard_h1_and_rating {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 0px;
+        }
+
+        .foodrating {
+            width: 60px;
+            height: 20px;
+
+        }
+       
+
+        .rect2 {
+            position: relative;
+            bottom: 315px;
+            right: 15px;
+            width: 325px;
+            height: 230px;
+            border: 1px solid lavender;
+            border-radius: 0 0px 80px 0;
+            background-image: url();
+            transform: rotate(10deg);
+            object-fit: cover;
+        }
+
+        .checked {
+            color: #ffd700;
+        }
+
+        .btnsHeading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 200px;
+            justify-content: center;
+
+        }
+
+        .rating {
+            width: 100px;
+            height: 30px;
+            margin: 0px auto;
+        }
+
+        #cus1 {
+            background-color: #ed3731;
+            border: 1px solid #ed3731;
+            padding: 5px;
+        }
+
+        #cus2 {
+            background-color: #ed3731;
+            border: 1px solid #ed3731;
+            padding: 5px;
+        }
+
+        #cus3 {
+            background-color: #ed3731;
+            border: 1px solid #ed3731;
+            padding: 5px;
+        }
+
+        .addtocart {
+
+            background-color: black;
+            color: white;
+            border: 1px solid black;
+            border-radius: 4px;
+            color: white;
+            padding: 5px;
+            font-size: 10px;
+            margin-top: 3px;
+            cursor: pointer;
+            transition: all 0.5s ease-in-out
+        }
+        .addtocart:hover{
+            background: none;
+            color: black;
+        }
+
+        .firebtn {
+            background-color: #ed3731;
+            border: 1px solid #ed3731;
+            color: white;
+        }
+
+        .firebtn:hover {
+            background-color: #ee231c;
+            border: 1px solid #eb231c;
+        }
+
+        #deleteimg {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+
+        .incrementbtn {
+            height: 15px;
+            width: 15px;
+            background-color: white;
+            border: 1px solid black;
+            color: black;
+            border-radius: 4px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .deleteimg_and_price {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .deleteimg_and_price span {
+            color: #ed3731;
+        }
+        .navbar_lock{
+            justify-content: center;
+            align-items: center; 
+            position: absolute;
+            font-size: 25px;
+            background-color: white;
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+            top: 5px;
+            right: 10px;
+            display: none;
+        }
+    </style>
+
+
+    <!-- responsive -->
+    <style>
+        @media screen and (max-width:1350) {
+            
+        }
+        @media screen and (max-width:930px) {
+
+            #Reservation {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 40vh;
+            }
+
+            .getdata {
+                width: 100%;
+            }
+
+            .tablepic {
+                display: none;
+            }
+
+
+            .footerdetail {
+                width: 100%;
+
+            }
+
+            .container {
+                flex-direction: column-reverse;
+            }
+
+            .about {
+                text-align: center;
+                margin-bottom: 30px;
+                margin-left: 0px;
+            }
+
+
+        }
+
+        @media screen and (max-width:700px) {
+            .links {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-evenly;
+                background-color: #f0514c;
+                width: 60%;
+                min-height: 300px;
+                position: absolute;
+                top: -300px;
+                left:20%;
+                z-index: 1;
+                border-radius: 8px;
+                transition: all 0.5s ease-in-out;
+                
+              
+            }
+            .navbar_lock{
+                display: flex;
+
+            }
+      
+            .links a{
+                color: white;
+            }
+
+
+
+
+
+            .aboutRestaurent img {
+                display: none;
+            }
+
+            .left {
+                min-height: 50%;
+            }
+
+            .Foods {
+
+                flex-direction: column;
+                align-items: center;
+            }
+            .foodrating {
+    width: 90px;
+    height: 30px;
+}
+
+            .Foodcard {
+                width: 90%;
+            }
+
+            .sheffs {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .cardsheff {
+                width: 90%;
+            }
+
+            .cardsheff::before {
+                width: 100%;
+            }
+
+            #rightabout {
+                display: none;
+            }
+
+            .galleryimage div {
+                width: 90%;
+            }
+
+            #footer_input {
+                display: none;
+            }
+
+            .para {
+                padding: 0px 5px;
+            }
+
+            .secondcontainer {
+                margin-top: 100px;
+            }
+
+            .navbaritem {
+                width: auto;
+            }
+
+            .hamburgur {
+                display: block;
+                position: absolute;
+                right: 70px;
+            }
+
+            .Foodcard__info p{
+                font-size: 20px;
+            }
+
+        }
+
+        @media screen and (max-width:620px) {
+            .itembuttons {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btnsHeading {
+                min-height: 400px;
+            }
+
+            .Menubuttons {
+                width: 40%;
+            }
+
+            .firebtn {
+                width: 40%;
+            }
+
+            .logo {
+                display: none;
+            }
+            .hamburgur{
+                right: 0px;
+            }
+           
+           
+      
+        }
+        @media screen and (max-width:500px){
+            .links{
+                width: 80%;
+                left: 10%;
+            }
+        }
+
+
+
+
+
+        .allheadings {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 40px;
+            margin: 30px auto;
+            text-align: center;
+            color: black;
+
+        }
+    
+    </style>
+    <!-- footer part -->
+
+    <style>
+            .popup {
+            /* display: flex; */
+            width: 300px;
+            height: 50px;
+            border: 1px solid white;
+            color: black;
+            margin: auto;
+            position: absolute;
+            top: -60px;
+            right: 40%;
+            animation-name: showPopup, RemovePopup;
+            animation-duration: 1s;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards;
+            animation-iteration-count: 1;
+            animation-delay: 0s, 3s;
+            background-color:white;
+            display: none;
+            
+
+        }
+
+        @keyframes showPopup {
+            from {
+                top: -100px;
+            }
+
+            to {
+                top: 20px;
+            }
+        }
+
+        @keyframes RemovePopup {
+            from {
+                top: 20px;  
+            }
+
+            to {
+                top: -100px;
+            }
+        }
+
+        .progressbar {
+            width: 0px;
+            height: 5px;
+            position: absolute;
+            bottom: 0%;
+            transition: all 0.5s linear;
+            animation: progressbar 0.5s linear 1.5s 1 forwards;
+        }
+
+        @keyframes progressbar {
+            from {
+                width: 0px;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        .popup_pic {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+
+        }
+
+        .popup_info {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 8px;
+        }
+
+        .added_removed {
+            /* color: black; */
+           margin-left: 10px;
+        }
+        .popup_item_name_purpose{
+            display: inline-flex;
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img
+                src="https://png.pngtree.com/png-clipart/20200709/original/pngtree-logo-fried-chicken-restaurant-png-image_4130223.jpg">
+            HotChix
+        </div>
+        <div class="hamburgur" onclick="Manupulate_links('Block')">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+
+        <div class="navbaritem">
+
+            <div class="links">
+                <span class="navbar_lock" onclick="Manupulate_links('None')">X</span>
+                <a href="/">Home</a>
+                <a href="#section">Menu</a>
+                <a href="#Reservation">BookATable</a>
+                <a href="#aboutus">About</a>
+                <a href="#gallery">Gallery</a>
+            </div>
+
+            <div class="cartlogo" onclick="showCartItem('Block')">
+                <img src="./Foodimages/cartlogorm.png">
+                <span class="count">0</span>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="popup">
+        <div class="popup_info">
+            <div class="popup_item_name_purpose">    
+                <h4 class="addedItemName"></h4> <h4 class="added_removed"></h4>
+            </div>
+            <img src="./additempic.jpg" class="popup_pic">
+        </div>
+        <div class="progressbar"></div>
+    </div>
+
+
+    <div class="container">
+
+
+
+
+        <div class="about" data-aos="slide-right">
+
+            <h1 class="h1">Healthy Food to<br> Live a healthier Life<br> in the future</h1>
+
+            <div class="para_n_btns">
+                <P class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id eveniet reiciendis impedit
+                    eius saepe odit
+                    hic molestiae obcaecati,
+                </P>
+                <div>
+                    <button class="keepinTouch"> Reservation</button>
+                    <button class="keepinTouch"> View Menu</button>
+                </div>
+            </div>
+        </div>
+
+        <img src="./Foodimages/platewithfoodrm.png" alt="" id="plate" data-aos="slide-left">
+        <div id="cart">
+            <Span id="cross" onclick="showCartItem('none')">X</Span>
+            <div id="cartdiv">
+            </div>
+            <div class="totalprice_check">
+                <div class="calprice">
+                    <h3>TotalPrice:</h3>
+                    <h4 class="priceincart">0</h4>
+                </div>
+                <button id="CheckOut" onclick="checkout()">CheckOut</button>
+                <a href="/checkout.html" id="checkout_route" style="display: none;"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="secondcontainer">
+
+        <div class="btnsHeading">
+            <h1 class="allheadings">What kind of Foods we serve for you</h1>
+            <div class="itembuttons">
+                <button class="Menubuttons" id="all" onclick="showItems(this)">All</button>
+                <button class="Menubuttons" id="1" onclick="showItems(this)">FastFood</button>
+                <button class="Menubuttons" id="2" onclick="showItems(this)">Fish</button>
+                <button class="Menubuttons" id="3" onclick="showItems(this)">Karahi</button>
+                <button class="Menubuttons" id="4" onclick="showItems(this)">Icecream</button>
+            </div>
+        </div>
+
+        <div class="Foods">
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+    <section id="section2">
+        <h1 class="allheadings">OUR SHEFF's</h1>
+        <div class="sheffs">
+        </div>
+    </section>
+
+
+    <section>
+        <div id="aboutus" data-aos="fade-right">
+            <div class="leftabout">
+                <div class="leftContent">
+
+                    <h2>About Our Story</h2>
+                    <h1>New One's Special<br>Restaurent</h1>
+                    <div class="underline"></div>
+                    <div class="underline"></div>
+                    <P>where culinary artistry meets warm hospitality in a celebration of flavors. Our story began with
+                        a passion for crafting exceptional dining experiences, .</P>
+                    <Button id="readmore">Read more</Button>
+                </div>
+
+            </div>
+            <img src="./Foodimages/servepic.jpg" id="rightabout">
+        </div>
+
+
+    </section>
+
+
+    <section id="customer-Preview">
+        <h1 class="allheadings">Customer Preview</h1>
+        <div class="customers" data-aos="fade-left">
+
+
+            <div class="eachcustomer">
+                <div class="cusimg">
+                    <img src="./Foodimages/cus2.jpg">
+                </div>
+                <h2 class="cusname">Leza</h2>
+                <P class="cusdes">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco </P>
+                <div class="rating">
+                    <img src="./Foodimages/rating star.png" alt="" class="rating">
+                </div>
+                <div class="sliderbtns">
+                    <button class="sliderbtn" id="cus1"></button>
+                    <button class="sliderbtn"></button>
+                    <button class="sliderbtn"></button>
+                </div>
+            </div>
+
+
+            <div class="eachcustomer">
+                <div class="cusimg">
+                    <img src="./Foodimages/umairpic1.jpg">
+                </div>
+                <h2 class="cusname">Denver</h2>
+                <P class="cusdes">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco </P>
+                <div class="rating">
+                    <img src="./Foodimages/rating star.png" alt="" class="rating">
+                </div>
+                <div class="sliderbtns">
+                    <button class="sliderbtn"></button>
+                    <button class="sliderbtn" id="cus2"></button>
+                    <button class="sliderbtn"></button>
+                </div>
+            </div>
+
+
+
+
+            <div class="eachcustomer">
+                <div class="cusimg">
+                    <img src="./Foodimages/cus4.jpg">
+                </div>
+                <h2 class="cusname">Elisi searia</h2>
+                <P class="cusdes">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco </P>
+                <div class="rating">
+                    <img src="./Foodimages/rating star.png" alt="" class="rating">
+                </div>
+                <div class="sliderbtns">
+                    <button class="sliderbtn"></button>
+                    <button class="sliderbtn"></button>
+                    <button class="sliderbtn" id="cus3"></button>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+    </section>
+
+
+
+    <section id="gallery">
+        <h1 class="heading allheadings">Some Shots Of Restuarent</h1>
+        <div class="galleryimage">
+
+
+            <div  data-aos="zoom-in">
+                <img src="./Foodimages/gallery5.jpg">
+            </div>
+            <div data-aos="zoom-in">
+                <img src="./Foodimages/gallery3.jpg">
+            </div>
+            <div data-aos="zoom-in">
+                <img src="./Foodimages/gallery2.jpg">
+            </div>
+
+            <div data-aos="zoom-in"> 
+                <img src="./Foodimages/gallery1.jpg">
+            </div>
+
+            <div data-aos="zoom-in"> 
+                <img src="./Foodimages/gallery3.jpg">
+            </div data-aos="zoom-in">
+
+            <div data-aos="zoom-in">
+                <img src="./Foodimages/gallery4.jpg">
+            </div data-aos="zoom-in">
+
+        </div>
+    </section>
+
+
+    <section id="Reservation">
+        <div class="getdata" data-aos="fade-right">
+            <h2>Reservation</h2>
+            <h1 class="allheadings" style="margin-top: 10px;">Book Table</h1>
+
+            <div class="inputs">
+                <input type="text" placeholder="Enter Your Name:" class="input">
+                <input type="number" placeholder="Enter Your Phone" class="input">
+                <input type="email" placeholder="Enter Your Email" class="input">
+                <input type="Date" class="input" value="2012-3-23">
+
+                <div class="optionsdiv">
+
+                    <select name="timing" id="timing" class="options">
+                        <option>8:00 PM</option>
+                        <option>9:00 PM</option>
+                        <option>10:00 PM</option>
+                        <option>11:00 PM</option>
+                        <option>12:00 PM</option>
+                        <option>1:00 AM</option>
+                        <option>2:00 AM</option>
+                    </select>
+                </div>
+
+                <div class="optionsdiv">
+                    <select name="persons" id="person" class="options">
+                        <option>2 Person</option>
+                        <option>4 Person</option>
+                        <option>6 Person</option>
+                        <option>Group</option>
+                    </select>
+                </div>
+
+
+                <div class="Reservationbtn">
+                    <Button class="keepinTouch">Reservation</Button>
+                </div>
+            </div>
+        </div>
+
+        <img src="./Foodimages/gallery4.jpg " class="tablepic" data-aos="fade-left">
+
+    </section>
+
+
+    <footer id="footer">
+        <div class="footerdetail">
+            <div class="eachfooterpart address-detail">
+                <h1 class="footersubheading">The Good Batch</h1>
+
+                <h2 id="address">Street No 11 <br>Jam sahb road Nawabshah</h2>
+                <h2 class="phone"><img src="./Foodimages/phonerm.png">+92-3300-758</h2>
+
+
+            </div>
+            <div class="eachfooterpart " id="footer_input">
+                <h1 class="footersubheading">Join in our Mailing list</h1>
+                <div class="footercontent">
+                    <div class="enteremail_button"><input type="text" placeholder="Enter Your Queery"><button
+                            id="Send">Send</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="eachfooterpart" id="socialMedia_link">
+                <h1 class="footersubheading">Follow US</h1>
+                <div class="restaurentlink">
+                    <a href="#"><img src="./Foodimages/linkedin2.jpg"></a>
+                    <a href="#"><img src="./Foodimages/facebook1.jpg"></a>
+                    <a href="#"><img src="./Foodimages/twitter.jpg"></a>
+                </div>
+
+            </div>
+        </div>
+        <div class="copyright">@copy; All right reserved umiii215020@gmail.com</div>
+    </footer>
+
+
+     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+     <script>
+        AOS.init({
+            duration: 1000,
+            offset: 200
+        });
+    </script> 
+</body>
+<script src="./foods.js"></script>
+<script src="./slider.js"></script>
+<script>
+
+
+function Manupulate_links(property){
+    const links_div= document.querySelector('.links')
+    if(property=='Block'){
+        links_div.style.top="200px";
+    }
+    else{
+        links_div.style.top="-300px";
+    }
+}
+
+
+
+</script>
+
+</html>
